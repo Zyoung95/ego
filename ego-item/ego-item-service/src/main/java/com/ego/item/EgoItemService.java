@@ -1,4 +1,4 @@
-package com.ego.item.service;
+package com.ego.item;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

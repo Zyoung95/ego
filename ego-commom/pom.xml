@@ -12,5 +12,11 @@
     <groupId>com.ego.commom</groupId>
     <artifactId>ego-commom</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
