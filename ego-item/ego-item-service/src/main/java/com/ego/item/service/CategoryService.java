@@ -14,4 +14,8 @@ public interface CategoryService {
     //int update(Category category);
 
     int update(Long id, String name);
+
+    List<Category> findById(Long id);
+
+    List<Category> queryNameByIds(List<Long> cids);
 }

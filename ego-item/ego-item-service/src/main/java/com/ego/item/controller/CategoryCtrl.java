@@ -25,6 +25,15 @@ public class CategoryCtrl {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping("/bid/{id}")
+    public ResponseEntity<List<Category>> findById(@PathVariable("id") Long id){
+        List<Category> list = categoryService.findById(id);
+        if(list==null||list.size()==0){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(list);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<String> addCategory(@RequestBody Category category){
         //System.out.println(category.getName()+category.getParentId());

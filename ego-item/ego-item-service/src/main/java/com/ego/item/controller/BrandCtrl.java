@@ -5,11 +5,11 @@ import com.ego.commom.PageResult;
 import com.ego.item.pojo.Brand;
 import com.ego.item.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/brand")
@@ -31,5 +31,32 @@ public class BrandCtrl {
             ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(result);
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> save(Brand brand, @RequestParam("cids")List<Long> cids){
+        brandService.save(brand,cids);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> update(Brand brand, @RequestParam("cids")List<Long> cids){
+        brandService.update(brand,cids);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteById(@RequestParam("id") Long id){
+        brandService.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/cid/{cid}")
+    public ResponseEntity<List<Brand>> ListByCid(@PathVariable("cid") Long cid){
+        List<Brand> list = brandService.ListByCid(cid);
+        if(list==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(list);
     }
 }
