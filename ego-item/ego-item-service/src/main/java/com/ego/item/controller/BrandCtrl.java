@@ -4,6 +4,7 @@ package com.ego.item.controller;
 import com.ego.commom.PageResult;
 import com.ego.item.pojo.Brand;
 import com.ego.item.service.BrandService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -58,5 +59,14 @@ public class BrandCtrl {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(list);
+    }
+    @GetMapping("/bname")
+    public ResponseEntity<String> getNameByBid(@RequestParam("bid") Long bid){
+        Brand brand = brandService.getById(bid);
+        String bname = brand.getName();
+        if(StringUtils.isBlank(bname)){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(bname);
     }
 }

@@ -3,10 +3,12 @@ package com.ego.item.controller;
 
 import com.ego.item.pojo.Category;
 import com.ego.item.service.CategoryService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -58,8 +60,13 @@ public class CategoryCtrl {
         return ResponseEntity.ok("更新成功");
     }
 
-    @GetMapping("/aaa")
-    public void qwe(@RequestParam String a){
-        System.out.println(a);
+    @GetMapping("/names")
+    public ResponseEntity<List<String>> queryNameByIds(@RequestParam("cids") List<Long> cids){
+        List<Category> list = categoryService.queryNameByIds(cids);
+        List names = new ArrayList();
+        list.forEach(category -> {
+            names.add(category.getName());
+        });
+        return ResponseEntity.ok(names);
     }
 }

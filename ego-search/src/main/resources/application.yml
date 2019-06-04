@@ -1,12 +1,14 @@
 server:
-  port: 8082
+  port: 8083
 spring:
   application:
-    name: upload-service
-  servlet:
-    multipart:
-      max-file-size: 5MB # 限制文件上传的大小
-# Eureka
+    name: search-service
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.74.128:9300
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:
@@ -17,11 +19,3 @@ eureka:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
-fdfs:
-  so-timeout: 1501
-  connect-timeout: 601
-  thumb-image: # 缩略图
-    width: 60
-    height: 60
-  tracker-list: # tracker地址
-    - 192.168.74.128:22122

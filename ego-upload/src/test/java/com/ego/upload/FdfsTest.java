@@ -22,10 +22,10 @@ public class FdfsTest {
     private ThumbImageConfig thumbImageConfig;
     @Test
     public void testUpload() throws FileNotFoundException {
-        File file = new File("D:\\test\\baby.png");
+        File file = new File("D:\\yaorange\\upload\\girl.jpeg");
 // 上传
         StorePath storePath = this.storageClient.uploadFile(
-                new FileInputStream(file), file.length(), "png", null);
+                new FileInputStream(file), file.length(), "jpeg", null);
 // 带分组的路径
         System.out.println(storePath.getFullPath());
 // 不带分组的路径
@@ -33,10 +33,10 @@ public class FdfsTest {
     }
     @Test
     public void testUploadAndCreateThumb() throws FileNotFoundException {
-        File file = new File("D:\\test\\baby.png");
+        File file = new File("D:\\yaorange\\upload\\girl.jpeg");
 // 上传图并且生成缩略图
         StorePath storePath = this.storageClient.uploadImageAndCrtThumbImage(
-                new FileInputStream(file), file.length(), "png", null);
+                new FileInputStream(file), file.length(), "jpeg", null);
 // 带分组的路径
         System.out.println(storePath.getFullPath());
 // 不带分组的路径

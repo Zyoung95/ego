@@ -55,13 +55,15 @@ public class UploadServiceImpl implements UploadService {
             return url;*/
             // 2、将图片上传到FastDFS
             // 2.1、获取文件后缀名
+            String fullPath = null;
             String extension = StringUtils.substringAfterLast(file.getOriginalFilename(),
-                    "/");
+                    ".");
             // 2.2、上传
             StorePath storePath = this.storageClient.uploadFile(
                     file.getInputStream(), file.getSize(), extension, null);
+            fullPath = storePath.getFullPath();
             // 2.3、返回完整路径
-            return "http://image.ego.com/" + storePath.getFullPath();
+            return "http://image.ego.com/" + fullPath;
         } catch (Exception e) {
             return null;
         }

@@ -19,7 +19,7 @@ public class GoodsCtrl {
 
     @GetMapping("/spu/page")
     public ResponseEntity<PageResult<SpuBO>> page(
-            @RequestParam("key") String key,
+            @RequestParam(value = "key",required = false) String key,
             @RequestParam("saleable") Boolean saleable,
             @RequestParam(value = "page",defaultValue = "1") Integer page,
             @RequestParam(value = "rows",defaultValue = "5") Integer rows
