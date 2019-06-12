@@ -26,6 +26,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.ego.commom</groupId>
+            <artifactId>ego-commom</artifactId>
+            <version>${ego.latest.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ego.auth</groupId>
+            <artifactId>ego-auth-common</artifactId>
+            <version>${ego.latest.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

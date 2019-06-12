@@ -1,7 +1,7 @@
 package com.ego.item.controller;
 
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.pojo.Brand;
 import com.ego.item.service.BrandService;
 import org.apache.commons.lang3.StringUtils;
@@ -68,5 +68,21 @@ public class BrandCtrl {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(bname);
+    }
+    @GetMapping("/bid/{bids}")
+    public ResponseEntity<List<Brand>> queryListByIds(@RequestParam("bids") List<Long> bids){
+        List<Brand> list = brandService.queryListByIds(bids);
+        if(list==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(list);
+    }
+    @GetMapping("/brand")
+    public ResponseEntity<Brand> getBrandByBid(@RequestParam("bid") Long bid){
+        Brand brand = brandService.getById(bid);
+        if(brand==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(brand);
     }
 }

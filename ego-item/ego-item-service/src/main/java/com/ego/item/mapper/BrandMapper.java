@@ -5,12 +5,13 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import tk.mybatis.mapper.additional.idlist.SelectByIdListMapper;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
 @org.apache.ibatis.annotations.Mapper
-public interface BrandMapper extends Mapper<Brand> {
+public interface BrandMapper extends Mapper<Brand> , SelectByIdListMapper<Brand,Long> {
 
     @Insert("insert into tb_category_brand(category_id,brand_id) values(#{cid},#{bid})")
     void save(@Param("bid") Long bid,@Param("cid") Long cid);

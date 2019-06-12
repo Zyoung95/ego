@@ -67,6 +67,18 @@ public class CategoryCtrl {
         list.forEach(category -> {
             names.add(category.getName());
         });
+        if(list==null||list.size()==0){
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(names);
     }
+    @GetMapping("/category")
+    public ResponseEntity<List<Category>>  queryCategoryByIds(@RequestParam("cids") List<Long> cids){
+        List<Category> list = categoryService.queryNameByIds(cids);
+        if(list==null||list.size()==0){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(list);
+    }
+
 }

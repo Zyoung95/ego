@@ -1,4 +1,4 @@
-package com.ego.commom;
+package com.ego.commom.pojo;
 
 import java.util.List;
 

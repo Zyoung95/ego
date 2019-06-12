@@ -1,0 +1,16 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: sms-service
+  rabbitmq:
+    host: 192.168.74.128
+    username: ego
+    password: ego
+    virtual-host: /ego
+ego:
+  sms:
+    accessKeyId: LTAIpStRoIji30zu # 你自己的accessKeyId
+    accessKeySecret: Qfm8sYq2Yb5KkUtYzZzbi2AQ2pG4Wt # 你自己的AccessKeySecret
+    signName: 易购商城 # 签名名称
+    verifyCodeTemplate: SMS_167531748 # 模板名称

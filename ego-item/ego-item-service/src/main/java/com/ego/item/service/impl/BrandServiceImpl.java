@@ -1,6 +1,6 @@
 package com.ego.item.service.impl;
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.mapper.BrandMapper;
 import com.ego.item.pojo.Brand;
 import com.ego.item.service.BrandService;
@@ -80,5 +80,11 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public List<Brand> ListByCid(Long cid) {
         return brandMapper.ListByCid(cid);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Brand> queryListByIds(List<Long> bids) {
+        return brandMapper.selectByIdList(bids);
     }
 }

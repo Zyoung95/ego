@@ -4,6 +4,7 @@ import com.ego.item.pojo.Category;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.CacheRequest;
 import java.util.List;
 
 @RequestMapping("/category")
@@ -24,4 +25,7 @@ public interface CategoryApi {
     public ResponseEntity<String> update(@RequestParam Long id,@RequestParam String name);
     @GetMapping("/names")
     public ResponseEntity<List<String>> queryNameByIds(@RequestParam("cids") List<Long> cids);
+
+    @GetMapping("/category")
+    public ResponseEntity<List<Category>>  queryCategoryByIds(@RequestParam("cids") List<Long> cids);
 }

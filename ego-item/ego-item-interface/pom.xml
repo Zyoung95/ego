@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.ego.commom</groupId>
             <artifactId>ego-commom</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${ego.latest.version}</version>
         </dependency>
         <dependency>
             <groupId>tk.mybatis</groupId>

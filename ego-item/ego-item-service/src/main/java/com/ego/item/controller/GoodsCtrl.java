@@ -1,6 +1,6 @@
 package com.ego.item.controller;
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.BO.SpuBO;
 import com.ego.item.pojo.Sku;
 import com.ego.item.pojo.SpuDetail;
@@ -57,5 +57,13 @@ public class GoodsCtrl {
     public ResponseEntity<Void> deleteById(@RequestParam Long id){
         goodsService.deleteById(id);
         return ResponseEntity.ok().build();
+    }
+    @GetMapping("/spuBO/{spuId}")
+    public ResponseEntity<SpuBO> queryGoodsById(@PathVariable("spuId") Long spuId){
+        SpuBO spuBO = goodsService.queryGoodsById(spuId);
+        if(spuBO==null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(spuBO);
     }
 }

@@ -1,11 +1,11 @@
 package com.ego.item.api;
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.pojo.Brand;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.CacheRequest;
 import java.util.List;
 
 @RequestMapping("/brand")
@@ -33,4 +33,10 @@ public interface BrandApi {
 
     @GetMapping("/bname")
     public ResponseEntity<String> getNameByBid(@RequestParam("bid") Long bid);
+
+    @GetMapping("/bid/{bids}")
+    public ResponseEntity<List<Brand>> queryListByIds(@RequestParam("bids") List<Long> bids);
+
+    @GetMapping("/brand")
+    public ResponseEntity<Brand> getBrandByBid(@RequestParam("bid") Long bid);
 }

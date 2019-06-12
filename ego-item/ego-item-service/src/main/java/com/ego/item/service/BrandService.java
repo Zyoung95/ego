@@ -1,6 +1,6 @@
 package com.ego.item.service;
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.pojo.Brand;
 
 import java.util.List;
@@ -17,4 +17,6 @@ public interface BrandService {
     Brand getById(Long brandId);
 
     List<Brand> ListByCid(Long cid);
+
+    List<Brand> queryListByIds(List<Long> bids);
 }

@@ -1,6 +1,6 @@
 package com.ego.item.service.impl;
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.BO.SpuBO;
 import com.ego.item.mapper.SkuMapper;
 import com.ego.item.mapper.SpuDetailMapper;
@@ -133,6 +133,25 @@ public class GoodsServiceImpl implements GoodsService {
             }
         }
         spuMapper.deleteByPrimaryKey(id);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public SpuBO queryGoodsById(Long spuId) {
+        SpuBO spuBO = new SpuBO();
+        Spu spu = spuMapper.selectByPrimaryKey(spuId);
+        BeanUtils.copyProperties(spu,spuBO);
+        SpuDetail spuDetail = spuDetailMapper.selectByPrimaryKey(spuId);
+        spuBO.setSpuDetail(spuDetail);
+        Sku sku = new Sku();
+        sku.setSpuId(spuId);
+        List<Sku> skus = skuMapper.select(sku);
+        skus.forEach(sku1 -> {
+            Stock stock = stockMapper.selectByPrimaryKey(sku1.getId());
+            sku.setStock(stock);
+        });
+        spuBO.setSkus(skus);
+        return spuBO;
     }
 
     @Transactional

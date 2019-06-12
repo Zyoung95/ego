@@ -1,6 +1,6 @@
 package com.ego.item.api;
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.BO.SpuBO;
 import com.ego.item.pojo.Sku;
 import com.ego.item.pojo.SpuDetail;
@@ -41,4 +41,6 @@ public interface GoodsApi {
     public ResponseEntity<Void> update(@RequestBody SpuBO spuBO);
     @DeleteMapping
     public ResponseEntity<Void> deleteById(@RequestParam Long id);
+    @GetMapping("/spuBO/{spuId}")
+    public ResponseEntity<SpuBO> queryGoodsById(@PathVariable("spuId") Long spuId);
 }

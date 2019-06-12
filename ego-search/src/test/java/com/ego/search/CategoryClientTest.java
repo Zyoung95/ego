@@ -1,6 +1,6 @@
 package com.ego.search;
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.BO.SpuBO;
 import com.ego.search.client.CategoryClient;
 import com.ego.search.client.GoodsClient;
@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EgoSearchService.class)
@@ -58,5 +59,33 @@ public class CategoryClientTest {
             //System.out.println(size);
             goodsRepository.saveAll(listGoods);
         }while(size==10);
+    }
+
+    @Test
+    public void demo() {
+        Scanner scanner = new Scanner(System.in);
+        int n = 0;
+        while(n==-1){
+            System.out.println("请输入想要打印菱形的行数：");
+            n = scanner.nextInt();
+            for (int i = 0; i < n; i++) {
+                for (int k = 0; k < n-1-i; k++) {
+                    System.out.print(" ");
+                }
+                for (int j = 0; j < 2*i+1; j++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+            for (int i = 0; i < 3; i++) {
+                for (int k = 0; k <= i; k++) {
+                    System.out.print(" ");
+                }
+                for (int j = 0; j < 2*n-2*i; j++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+            }
+        }
     }
 }

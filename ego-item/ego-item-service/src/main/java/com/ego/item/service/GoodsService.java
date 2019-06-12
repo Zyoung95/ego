@@ -1,6 +1,6 @@
 package com.ego.item.service;
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.item.BO.SpuBO;
 import com.ego.item.pojo.Sku;
 import com.ego.item.pojo.SpuDetail;
@@ -20,4 +20,6 @@ public interface GoodsService {
     List<Sku> getSkuById(Long id);
 
     void deleteById(Long id);
+
+    SpuBO queryGoodsById(Long spuId);
 }

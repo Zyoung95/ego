@@ -1,7 +1,7 @@
 package com.ego.search.controller;
 
 
-import com.ego.commom.PageResult;
+import com.ego.commom.pojo.PageResult;
 import com.ego.search.bo.SearchRequest;
 import com.ego.search.pojo.Goods;
 import com.ego.search.service.SearchService;
